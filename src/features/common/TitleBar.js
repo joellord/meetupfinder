@@ -8,8 +8,7 @@ export default class TitleBar extends Component {
   render() {
     return (
       <div className="common-title-bar">
-        <h1>Meetup Finder</h1>
-        <h2>A tool to help you find meetups by location</h2>
+        <img src={require('../../images/logo.png')} />
       </div>
     );
   }

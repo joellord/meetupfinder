@@ -1,0 +1,9 @@
+build
+node_modules
+npm-debug.log
+yarn-error.log
+coverage
+.nyc_output
+.tmp
+.DS_Store
+.idea

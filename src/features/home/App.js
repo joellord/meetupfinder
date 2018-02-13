@@ -30,7 +30,7 @@ export default class App extends Component {
             <NavBar />
         </aside>
         <footer className="hg__footer">
-            (c)
+            &copy; 2018 - Joel Lord &lt;<a href="mailto:me@joel-lord.com">me@joel-lord.com</a>&gt; - <a href="https://github.com/joellord/meetupfinder" target="_blank">View Source</a>
         </footer>
       </div>
     );

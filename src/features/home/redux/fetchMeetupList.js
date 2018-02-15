@@ -10,7 +10,7 @@ import {
 const url = 'https://wt-13aebf4eeaa9913542725d4a90e4d49e-0.run.webtask.io/meetupfinder/meetups';
 
 export function fetchMeetupList(args = {}) {
-  let locationToSearch = args.target.getAttribute("data-location");
+  let locationToSearch = args.location;
   return dispatch => {
     // optionally you can have getState as the second argument
     dispatch({
@@ -22,7 +22,13 @@ export function fetchMeetupList(args = {}) {
     });
 
     const promise = new Promise((resolve, reject) => {
-      axios.get(`${url}?location=${locationToSearch}`).then(
+      let localUrl = url;
+      if (args.latlng) {
+        localUrl += `?lat=${args.latlng.lat}&lon=${args.latlng.lng}`;
+      } else {
+        localUrl += `?location=${locationToSearch}`;
+      }
+      axios.get(localUrl).then(
         res => {
           dispatch({
             type: HOME_FETCH_MEETUP_LIST_SUCCESS,

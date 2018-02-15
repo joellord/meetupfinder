@@ -6,10 +6,12 @@ import {
   HOME_CHANGE_LOCATION,
 } from './constants';
 
-export function changeLocation(event) {
+export function changeLocation(query) {
+  let suggestion = query.suggestion;
   return {
     type: HOME_CHANGE_LOCATION,
-    location: event.target.value
+    location: `${suggestion.name}, ${suggestion.administrative}, ${suggestion.countryCode}`,
+    latlng: suggestion.latlng
   };
 }
 
@@ -18,7 +20,8 @@ export function reducer(state, action) {
     case HOME_CHANGE_LOCATION:
       return {
         ...state,
-        locationToSearch: action.location
+        locationToSearch: action.location,
+        latlng: action.latlng
       };
 
     default:

@@ -23,8 +23,11 @@ export class DefaultPage extends Component {
         {this.props.home.fetchMeetupListPending && 
           <p>Loading...</p>
         }
-        {this.props.home.meetupList.length > 0 && 
+        {this.props.home.meetupList !== null && this.props.home.meetupList.length > 0 && 
           <MeetupList />
+        }
+        {this.props.home.meetupList && this.props.home.meetupList.length == 0 && 
+          <p>No tech-related Meetups found for {this.props.home.locationToSearch}</p>
         }
         {this.props.home.fetchMeetupListError && 
           <div>

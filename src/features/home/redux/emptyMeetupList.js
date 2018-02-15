@@ -17,7 +17,7 @@ export function reducer(state, action) {
     case HOME_EMPTY_MEETUP_LIST:
       return {
         ...state,
-        meetupList: []
+        meetupList: null
       };
 
     default:

@@ -2,7 +2,7 @@ const initialState = {
 
   fetchMeetupListPending: false,
   fetchMeetupListError: null,
-  meetupList: [],
+  meetupList: null,
   locationToSearch: ""
 };
 

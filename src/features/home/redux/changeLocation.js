@@ -6,10 +6,12 @@ import {
   HOME_CHANGE_LOCATION,
 } from './constants';
 
-export function changeLocation(event) {
+export function changeLocation(query) {
+  debugger;
+  let suggestion = query.suggestion;
   return {
     type: HOME_CHANGE_LOCATION,
-    location: event.target.value
+    location: `${suggestion.name}, ${suggestion.administrative}, ${suggestion.countryCode}`
   };
 }
 

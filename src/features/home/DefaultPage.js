@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from './redux/actions';
 import MeetupList from "./MeetupList";
+import AlgoliaPlaces from "./AlgoliaPlaces";
 
 export class DefaultPage extends Component {
   static propTypes = {
@@ -11,14 +12,17 @@ export class DefaultPage extends Component {
     actions: PropTypes.object.isRequired,
   };
 
+  componentDidMount() {
+  }
+
   render() {
     const { changeLocation, fetchMeetupList, locationKeyDown } = this.props.actions;
     return (
       <div className="home-default-page">
         <p>This tool will help you find tech Meetups in a given city by searching for the city name.</p>
         <p>Enter the name of a city and hit the "Search" button</p>
-        <label>City: </label>
-        <input type="text" value={this.props.home.locationToSearch} onChange={changeLocation} onKeyDown={locationKeyDown} placeholder="ie: Ottawa, CA" />
+        <AlgoliaPlaces labelText={"City :"} options={{type: "city", style: false}} onChange={changeLocation} placeholder="ie: Ottawa, Canada" />
+
         <button onClick={fetchMeetupList} data-location={this.props.home.locationToSearch}>Search</button>
         {this.props.home.fetchMeetupListPending && 
           <p>Loading...</p>

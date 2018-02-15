@@ -79,5 +79,8 @@
     "webpack-dev-middleware": "^2.0.4",
     "webpack-hot-middleware": "^2.21.0",
     "webpack-node-externals": "^1.6.0"
+  },
+  "dependencies": {
+    "places.js": "^1.4.18"
   }
 }

@@ -17,7 +17,9 @@ export function reducer(state, action) {
     case HOME_EMPTY_MEETUP_LIST:
       return {
         ...state,
-        meetupList: null
+        meetupList: null,
+        latlng: null,
+        locationToSearch: null
       };
 
     default:

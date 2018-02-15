@@ -15,15 +15,27 @@ export class DefaultPage extends Component {
   componentDidMount() {
   }
 
+  fetchData() {
+    this.props.actions.fetchMeetupList({
+      location: this.props.home.locationToSearch,
+      latlng: this.props.home.latlng
+    });
+  }
+
   render() {
-    const { changeLocation, fetchMeetupList, locationKeyDown } = this.props.actions;
+    const { changeLocation, locationKeyDown } = this.props.actions;
     return (
       <div className="home-default-page">
         <p>This tool will help you find tech Meetups in a given city by searching for the city name.</p>
         <p>Enter the name of a city and hit the "Search" button</p>
-        <AlgoliaPlaces labelText={"City :"} options={{type: "city", style: false}} onChange={changeLocation} placeholder="ie: Ottawa, Canada" />
+        <AlgoliaPlaces 
+        labelText={"City :"} 
+        options={{type: "city", style: false}} 
+        onChange={changeLocation} 
+        autocompleteOptions={{autoselect: true}}
+        placeholder="ie: Ottawa, Canada" />
 
-        <button onClick={fetchMeetupList} data-location={this.props.home.locationToSearch}>Search</button>
+        <button onClick={this.fetchData.bind(this)}>Search</button>
         {this.props.home.fetchMeetupListPending && 
           <p>Loading...</p>
         }
@@ -31,7 +43,7 @@ export class DefaultPage extends Component {
           <MeetupList />
         }
         {this.props.home.meetupList && this.props.home.meetupList.length == 0 && 
-          <p>No tech-related Meetups found for {this.props.home.locationToSearch}</p>
+          <p>No tech-related Meetups found </p>
         }
         {this.props.home.fetchMeetupListError && 
           <div>

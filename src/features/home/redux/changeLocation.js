@@ -7,11 +7,11 @@ import {
 } from './constants';
 
 export function changeLocation(query) {
-  debugger;
   let suggestion = query.suggestion;
   return {
     type: HOME_CHANGE_LOCATION,
-    location: `${suggestion.name}, ${suggestion.administrative}, ${suggestion.countryCode}`
+    location: `${suggestion.name}, ${suggestion.administrative}, ${suggestion.countryCode}`,
+    latlng: suggestion.latlng
   };
 }
 
@@ -20,7 +20,8 @@ export function reducer(state, action) {
     case HOME_CHANGE_LOCATION:
       return {
         ...state,
-        locationToSearch: action.location
+        locationToSearch: action.location,
+        latlng: action.latlng
       };
 
     default:

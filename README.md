@@ -1,5 +1,5 @@
 # Meetup Finder
-View the version online at [meetupfinder.javascripteverything.com](http://meetupfinder.javascripteverything.com)
+View the version online at [meetupfinder.com](http://meetupfinder.com)
 
 # Run Locally
 This application was built using [Rekit](https://github.com/supnate/rekit). To run it locally:

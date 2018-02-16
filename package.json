@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "description": "meetupfinder-public created by Rekit.",
+  "license": "MIT",
   "keywords": [
     "rekit"
   ],

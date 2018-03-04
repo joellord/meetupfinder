@@ -2,7 +2,6 @@ var express    = require('express');
 var Webtask    = require('webtask-tools');
 var bodyParser = require('body-parser');
 var axios = require("axios");
-var MEETUP_KEY = "XXXXXXXXXXXXXXXXXXX";
 
 var app = express();
 
@@ -15,13 +14,12 @@ app.get('/', function (req, res) {
 app.get("/meetups", function (req, res) {
     var query = req.query;
     console.log("Fetching meetups for " + req.query.location);
-    var url = "https://api.meetup.com/find/groups?key=" + MEETUP_KEY + "&sign=true&photo-host=public&category=34&fields=last_event&fallback_suggestions=0";
+    var url = "https://api.meetup.com/find/groups?key=" + req.webtaskContext.secrets.MEETUP_KEY + "&sign=true&photo-host=public&category=34&fields=last_event&fallback_suggestions=0";
     if (req.query.lat && req.query.lon) {
         url += "&lat=" + req.query.lat + "&lon=" + req.query.lon
     } else {
         url += "&location=" + req.query.location;
     }
-    //var url = "https://api.meetup.com/find/groups?key=" + MEETUP_KEY + "&sign=true&photo-host=public&location=" + req.query.location + "&category=34&fields=last_event";
 
     axios(url).then(function(response) {
         //Try to return empty array when no meetups are found instead of the

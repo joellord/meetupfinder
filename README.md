@@ -14,5 +14,5 @@ This application was built using [Rekit](https://github.com/supnate/rekit). To r
 Then point your browser to [http://localhost:6075/](http://localhost:6075/) to view the app and [http://localhost:6076/](http://localhost:6076/) to run the IDE.
 
 # Backend
-The server runs on  [Webtasks](http://webtask.io) so that my Meetup.com API key is not exposed.  The code that is run on
+The server runs on  [Webtask](http://webtask.io) so that my Meetup.com API key is not exposed.  The code that is run on
 the server is in this respository under the webtask folder.

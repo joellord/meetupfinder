@@ -13,9 +13,18 @@ export class DefaultPage extends Component {
   };
 
   componentDidMount() {
+    // Check if we should fetch data immediately
+    // If there is a hash in the URL
+    if (window.location.hash.length > 1) {
+      this.props.home.locationToSearch = window.location.hash.substr(1);
+      window.requestAnimationFrame(() => {
+        this.fetchData(); // Fetch after element is rendered
+      });
+    }
   }
 
   fetchData() {
+    window.location.hash = this.props.home.locationToSearch;
     this.props.actions.fetchMeetupList({
       location: this.props.home.locationToSearch,
       latlng: this.props.home.latlng

@@ -99,7 +99,7 @@ export default class AlgoliaPlaces extends React.Component {
           placeholder={this.props.placeholder}
           onKeyDown={this.props.onKeyDown}
           type="text"
-          defaultValue={window.location.hash.substr(1)}
+          defaultValue={this.props.defaultValue}
           ref={(ref) => { this.autocompleteElem = ref; }}
         />
       </div>

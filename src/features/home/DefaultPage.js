@@ -16,7 +16,7 @@ export class DefaultPage extends Component {
     // Check if we should fetch data immediately
     // If there is a hash in the URL
     if (window.location.hash.length > 1) {
-      this.props.home.locationToSearch = window.location.hash.substr(1);
+      this.props.home.locationToSearch = decodeURI(window.location.hash.substr(1));
       window.requestAnimationFrame(() => {
         this.fetchData(); // Fetch after element is rendered
       });
@@ -24,7 +24,7 @@ export class DefaultPage extends Component {
   }
 
   fetchData() {
-    window.location.hash = this.props.home.locationToSearch;
+    window.location.hash = encodeURI(this.props.home.locationToSearch);
     this.props.actions.fetchMeetupList({
       location: this.props.home.locationToSearch,
       latlng: this.props.home.latlng
@@ -42,6 +42,7 @@ export class DefaultPage extends Component {
         options={{type: "city", style: false}} 
         onChange={changeLocation} 
         autocompleteOptions={{autoselect: true}}
+        defaultValue={decodeURI(window.location.hash.substr(1))}
         placeholder="ie: Ottawa, Canada" />
 
         <button onClick={this.fetchData.bind(this)}>Search</button>

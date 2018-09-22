@@ -10,6 +10,7 @@ export class DefaultPage extends Component {
   static propTypes = {
     home: PropTypes.object.isRequired,
     actions: PropTypes.object.isRequired,
+    radius: PropTypes.number
   };
 
   componentDidMount() {
@@ -27,15 +28,17 @@ export class DefaultPage extends Component {
     window.location.hash = encodeURI(this.props.home.locationToSearch);
     this.props.actions.fetchMeetupList({
       location: this.props.home.locationToSearch,
-      latlng: this.props.home.latlng
+      latlng: this.props.home.latlng,
+      radius: this.props.home.radius || 50
     });
   }
 
   render() {
-    const { changeLocation, locationKeyDown } = this.props.actions;
+    const { changeLocation, changeRadius, locationKeyDown } = this.props.actions;
     return (
       <div className="home-default-page">
         <p>This tool will help you find tech Meetups in a given city by searching for the city name.</p>
+        <p>Default search radius is 50 miles, you can adjust it below</p>
         <p>Enter the name of a city and hit the "Search" button</p>
         <AlgoliaPlaces 
         labelText={"City :"} 
@@ -44,6 +47,14 @@ export class DefaultPage extends Component {
         autocompleteOptions={{autoselect: true}}
         defaultValue={decodeURI(window.location.hash.substr(1))}
         placeholder="ie: Ottawa, Canada" />
+
+        <select onChange={changeRadius}>
+          <option disabled value="false">Search Radius</option>
+          <option value="10">10 miles</option>
+          <option value="25">25 miles</option>
+          <option value="50">50 miles</option>
+          <option value="100">100 miles</option>
+        </select>
 
         <button onClick={this.fetchData.bind(this)}>Search</button>
         {this.props.home.fetchMeetupListPending && 

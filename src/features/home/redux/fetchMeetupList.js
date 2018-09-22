@@ -28,6 +28,7 @@ export function fetchMeetupList(args = {}) {
       } else {
         localUrl += `?location=${locationToSearch}`;
       }
+      localUrl += `&radius=${args.radius}`;
       axios.get(localUrl).then(
         res => {
           dispatch({

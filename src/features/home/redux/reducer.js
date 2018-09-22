@@ -3,12 +3,14 @@ import { reducer as fetchMeetupListReducer } from './fetchMeetupList';
 import { reducer as changeLocationReducer } from './changeLocation';
 import { reducer as emptyMeetupListReducer } from './emptyMeetupList';
 import { reducer as locationKeyDownReducer } from './locationKeyDown';
+import { reducer as changeRadiusReducer } from './changeRadius';
 
 const reducers = [
   fetchMeetupListReducer,
   changeLocationReducer,
   emptyMeetupListReducer,
   locationKeyDownReducer,
+  changeRadiusReducer,
 ];
 
 export default function reducer(state = initialState, action) {

@@ -7,3 +7,6 @@ coverage
 .tmp
 .DS_Store
 .idea
+credentials.js
+dist
+

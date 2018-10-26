@@ -1,0 +1,95 @@
+.App {
+  padding: 0px;
+  font-family: Montserrat, sans-serif;
+  font-size: 1.2em;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.common-title-bar {
+  height: 100%;
+  background-color: #1f234a;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+.common-title-bar .left {
+  float: left;
+}
+
+.common-title-bar .right {
+  float: right;
+}
+
+.common-title-bar .crafted-by {
+  color: #f5f7f9;
+  padding-top: 35px;
+  padding-right: 20px;
+  font-size: 10px;
+}
+
+.common-title-bar .crafted-by img {
+  position: relative;
+  height: 20px;
+  padding-left: 5px;
+}
+
+.common-title-bar .crafted-by a {
+  color: inherit;
+  font-size: 1.2em;
+  text-decoration: inherit;
+}
+
+.left-nav {
+  padding-left: 1em;
+}
+
+.left-nav li {
+  /*margin-top: 5px;*/
+}
+
+.finder {
+  margin-top: 5px;
+}
+
+.ap-input {
+  width: 100%
+}
+
+.form-group.force-full-width div {
+  width: 100%
+}
+
+.home-meetup-list {
+  font-size: 0.8em;
+}
+
+.home-meetup-list thead {
+  font-weight: bold;
+  text-align: left;
+  background: #1f234a;
+  color: #2791d7;
+}
+
+.home-meetup-list th {
+  padding: 5px;
+}
+
+.home-meetup-list tr:nth-child(even) {
+  background: #eeeeee;
+}
+
+.home-meetup-list td {
+  padding: 5px;
+}
+
+.home-meetup-list td a {
+  color: #1f234a;
+  text-decoration: none;
+}
+
+.home-meetup-list td a:hover {
+  text-decoration: underline;
+}

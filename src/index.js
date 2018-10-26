@@ -1,32 +1,15 @@
-// Summary:
-//   This is the entry of the application, works together with index.html.
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 
-import 'babel-polyfill';
 import React from 'react';
-import { AppContainer } from 'react-hot-loader';
-import { render } from 'react-dom';
-import configStore from './common/configStore';
-import routeConfig from './common/routeConfig';
-import Root from './Root';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
 
-const store = configStore();
+ReactDOM.render(<App />, document.getElementById('root'));
 
-function renderApp(app) {
-  render(
-    <AppContainer>
-      {app}
-    </AppContainer>,
-    document.getElementById('react-root')
-  );
-}
-
-renderApp(<Root store={store} routeConfig={routeConfig} />);
-
-// Hot Module Replacement API
-/* istanbul ignore if  */
-if (module.hot) {
-  module.hot.accept('./common/routeConfig', () => {
-    const nextRouteConfig = require('./common/routeConfig').default; // eslint-disable-line
-    renderApp(<Root store={store} routeConfig={nextRouteConfig} />);
-  });
-}
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: http://bit.ly/CRA-PWA
+serviceWorker.unregister();
